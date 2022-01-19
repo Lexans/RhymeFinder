@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Book.cs" />
+    <Compile Include="WordType.cs" />
     <Compile Include="FormInputText.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,7 +63,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Text.cs" />
+    <Compile Include="Page.cs" />
     <Compile Include="Word.cs" />
     <EmbeddedResource Include="FormInputText.resx">
       <DependentUpon>FormInputText.cs</DependentUpon>
@@ -78,6 +80,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

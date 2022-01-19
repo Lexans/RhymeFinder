@@ -13,7 +13,8 @@ namespace RhymeFinder
 {
     public partial class FormMain : Form
     {
-        private Text txt;
+        private Page page;
+        private Book book;
 
         public FormMain()
         {
@@ -24,9 +25,17 @@ namespace RhymeFinder
         {
             FormInputText fit = new FormInputText();
             fit.ShowDialog();
-            txt = new Text(fit.InputedText);
+
+            if (fit.InputedText.Length == 0)
+                return;
+
+            book = new Book(fit.InputedText);
+            page = book.Pages[(int)numericUpDownPage.Value-1];
+            numericUpDownPage.Maximum = book.Pages.Count;
+
+            page.splitContentToWords();
             findRhymes();
-            showTxt();
+            showPage();
         }
 
         private void файлToolStripMenuItem_Click(object sender, EventArgs e)
@@ -34,26 +43,30 @@ namespace RhymeFinder
             DialogResult dr = openFileDialog1.ShowDialog();
             if (dr == DialogResult.OK)
             {
-                txt = new Text(
-                    File.ReadAllText(openFileDialog1.FileName)
-                    );
+                book = new Book(File.ReadAllText(openFileDialog1.FileName));
+                page = book.Pages[(int)numericUpDownPage.Value - 1];
+                numericUpDownPage.Maximum = book.Pages.Count;
+
+                page.splitContentToWords();
                 findRhymes();
-                showTxt();
+                showPage();
             }
             
         }
 
         private void findRhymes()
         {
-            txt.FindRhyme((int)numericUpDownForward.Value);
+            page.FindRhyme((int)numericUpDownForward.Value);
         }
 
         /// <summary>
         /// вывод текста в flowLayout
         /// </summary>
-        private void showTxt()
+        private void showPage()
         {
-            foreach(Word w in txt.Words)
+            flowLayoutPanelText.Controls.Clear();
+
+            foreach (Word w in page.Words)
             {
                 //слово в виде лейбла
                 Label l = new Label();
@@ -64,6 +77,7 @@ namespace RhymeFinder
                 l.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
                 l.Text = w.Text;
                 l.Margin = new System.Windows.Forms.Padding(0);
+                l.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
                 l.BackColor = Color.White;
 
 
@@ -111,11 +125,16 @@ namespace RhymeFinder
             if (w.bestRhyme < RhymeType.NoRhyme)
             {
                 int currIndex = flowLayoutPanelText.Controls.IndexOf(l);
-                for (int i = currIndex + 1; i <= currIndex + (int)numericUpDownForward.Value; i++)
+                int wordsForward = (int)numericUpDownForward.Value;
+                for (int i = currIndex + 1; i <= currIndex + wordsForward; i++)
                 {
                     if (i < flowLayoutPanelText.Controls.Count)
                     {
                         Word nextW = (Word)flowLayoutPanelText.Controls[i].Tag;
+                        if(nextW.wordType == WordType.Char)
+                        {
+                            wordsForward++;
+                        }
                         RhymeType rt = nextW.CheckRhyme(w);
                         switch (rt)
                         {
@@ -138,6 +157,21 @@ namespace RhymeFinder
 
                 }
             }
+        }
+
+        private void buttonGoPage_Click(object sender, EventArgs e)
+        {
+            page = book.Pages[(int)numericUpDownPage.Value - 1];
+            page.splitContentToWords();
+            findRhymes();
+            showPage();
+        }
+
+        private void buttonSetForward_Click(object sender, EventArgs e)
+        {
+            page.splitContentToWords();
+            findRhymes();
+            showPage();
         }
     }
 }

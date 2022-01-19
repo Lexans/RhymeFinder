@@ -17,6 +17,7 @@ namespace RhymeFinder
         public FormInputText()
         {
             InitializeComponent();
+            InputedText = "";
         }
 
         private void buttonOk_Click(object sender, EventArgs e)

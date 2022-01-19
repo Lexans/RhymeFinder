@@ -36,8 +36,13 @@ namespace RhymeFinder
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.numericUpDownForward = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
+            this.numericUpDownPage = new System.Windows.Forms.NumericUpDown();
+            this.buttonGoPage = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.buttonSetForward = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownForward)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPage)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanelText
@@ -48,7 +53,7 @@ namespace RhymeFinder
             this.flowLayoutPanelText.AutoScroll = true;
             this.flowLayoutPanelText.Location = new System.Drawing.Point(12, 85);
             this.flowLayoutPanelText.Name = "flowLayoutPanelText";
-            this.flowLayoutPanelText.Size = new System.Drawing.Size(1048, 561);
+            this.flowLayoutPanelText.Size = new System.Drawing.Size(1271, 415);
             this.flowLayoutPanelText.TabIndex = 0;
             // 
             // menuStrip1
@@ -59,7 +64,7 @@ namespace RhymeFinder
             this.ввестиToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1072, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1295, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -112,11 +117,69 @@ namespace RhymeFinder
             this.label1.TabIndex = 3;
             this.label1.Text = "сколько слов проверять";
             // 
+            // numericUpDownPage
+            // 
+            this.numericUpDownPage.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.numericUpDownPage.Location = new System.Drawing.Point(569, 525);
+            this.numericUpDownPage.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDownPage.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownPage.Name = "numericUpDownPage";
+            this.numericUpDownPage.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDownPage.TabIndex = 4;
+            this.numericUpDownPage.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // buttonGoPage
+            // 
+            this.buttonGoPage.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.buttonGoPage.Location = new System.Drawing.Point(695, 525);
+            this.buttonGoPage.Name = "buttonGoPage";
+            this.buttonGoPage.Size = new System.Drawing.Size(75, 23);
+            this.buttonGoPage.TabIndex = 5;
+            this.buttonGoPage.Text = "Перейти";
+            this.buttonGoPage.UseVisualStyleBackColor = true;
+            this.buttonGoPage.Click += new System.EventHandler(this.buttonGoPage_Click);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(491, 527);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 17);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Страница";
+            // 
+            // buttonSetForward
+            // 
+            this.buttonSetForward.Location = new System.Drawing.Point(333, 44);
+            this.buttonSetForward.Name = "buttonSetForward";
+            this.buttonSetForward.Size = new System.Drawing.Size(75, 23);
+            this.buttonSetForward.TabIndex = 7;
+            this.buttonSetForward.Text = "Задать";
+            this.buttonSetForward.UseVisualStyleBackColor = true;
+            this.buttonSetForward.Click += new System.EventHandler(this.buttonSetForward_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1072, 658);
+            this.ClientSize = new System.Drawing.Size(1295, 559);
+            this.Controls.Add(this.buttonSetForward);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.buttonGoPage);
+            this.Controls.Add(this.numericUpDownPage);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numericUpDownForward);
             this.Controls.Add(this.flowLayoutPanelText);
@@ -127,6 +190,7 @@ namespace RhymeFinder
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownForward)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,6 +205,10 @@ namespace RhymeFinder
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.NumericUpDown numericUpDownForward;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown numericUpDownPage;
+        private System.Windows.Forms.Button buttonGoPage;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button buttonSetForward;
     }
 }
 
