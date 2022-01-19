@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace RhymeFinder
 {
-    public partial class Form1 : Form
+    public partial class FormInputText : Form
     {
-        public Form1()
+        public string InputedText { get; set; }
+
+        public FormInputText()
         {
             InitializeComponent();
+        }
+
+        private void buttonOk_Click(object sender, EventArgs e)
+        {
+            InputedText = textBoxInput.Text;
+            this.Close();
         }
     }
 }
