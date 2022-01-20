@@ -30,6 +30,7 @@ namespace RhymeFinder
                 return;
 
             book = new Book(fit.InputedText);
+            numericUpDownPage.Value = 1;
             page = book.Pages[(int)numericUpDownPage.Value-1];
             numericUpDownPage.Maximum = book.Pages.Count;
 
@@ -44,6 +45,7 @@ namespace RhymeFinder
             if (dr == DialogResult.OK)
             {
                 book = new Book(File.ReadAllText(openFileDialog1.FileName));
+                numericUpDownPage.Value = 1;
                 page = book.Pages[(int)numericUpDownPage.Value - 1];
                 numericUpDownPage.Maximum = book.Pages.Count;
 

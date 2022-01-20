@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace RhymeFinder
         /// <summary>
         /// лучшая подобранная рифма для слова
         /// </summary>
-        public RhymeType bestRhyme { get; set;}
+        public RhymeType bestRhyme { get; set; }
 
         public WordType wordType { get; set; }
 
@@ -43,12 +44,12 @@ namespace RhymeFinder
             if (Text.ToLower() == w.Text.ToLower())
                 rt = RhymeType.NoRhyme;
             else if (w.Text.Length >= 3 && Text.Length >= 3 && Text.Substring(Text.Length - 3) == w.Text.Substring(w.Text.Length - 3))
-                rt =  RhymeType.ThreeLetter;
+                rt = RhymeType.ThreeLetter;
             else if (w.Text.Length >= 2 && Text.Length >= 2 && Text.Substring(Text.Length - 2) == w.Text.Substring(w.Text.Length - 2))
                 rt = RhymeType.TwoLetter;
             else if (CheckSpecialRhyme(Text, w.Text))
                 rt = RhymeType.Special;
-            else 
+            else
                 rt = RhymeType.NoRhyme;
 
             //сохраняем сведения о лучшей рифме
